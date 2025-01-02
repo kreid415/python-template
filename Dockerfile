@@ -3,14 +3,14 @@ FROM condaforge/mambaforge:4.9.2-5 AS conda
 # Ignore interactive prompts
 ARG DEBIAN_FRONTEND=noninteractive
 
-# install ssh
-RUN apt-get install ssh
-
 # update packages and install make
 RUN apt-get update && apt-get install make
 
-# install cmake
-RUN apt-get update && apt-get -y install cmake
+# install open-ssh
+RUN apt-get install -y openssh-client
+
+# install cmake and build-essentials
+RUN apt-get -y install cmake build-essential
 
 # Add environment lock file
 ADD conda-lock.yml /tmp/conda-lock.yml
