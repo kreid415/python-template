@@ -9,14 +9,15 @@ dependencies:
   - sphinx
   - pre-commit
   - conda-lock
+  - ipykernel
   - pip:
-    - pip
-    - setuptools
-    - wheel
+      - pip
+      - setuptools
+      - wheel
 prefix: /opt/conda/envs/myenv
 platforms:
-    - linux-aarch64
-    - linux-64
-    - osx-64
-    - osx-arm64
-    - win-64
+  - linux-aarch64
+  - linux-64
+  - osx-64
+  - osx-arm64
+  - win-64
