@@ -9,8 +9,8 @@
 		"dockerfile": "../Dockerfile"
 	},
 	"runArgs": [
-		"--gpus",
-		"all",
+		// "--gpus",
+		// "all",
 		"--env",
 		"NVIDIA_VISIBLE_DEVICES=all",
 		"--env",
