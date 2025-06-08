@@ -47,5 +47,19 @@ RUN conda-lock install --name myenv /tmp/conda-lock.yml
 RUN echo "source activate myenv" > ~/.bashrc
 ENV PATH=/opt/conda/envs/myenv/bin:$PATH
 
+# install precommit, ruff, and nbstripout
+RUN pip install pre-commit ruff nbstripout
+
+# precommit install --install-hooks
+RUN pre-commit install
+
+
+# install PyTorch with CUDA (only for Linux GPU image)
+RUN pip install --upgrade pip && \
+    pip install torch==2.2.0 torchvision==0.17.0 torchaudio==2.2.0 --index-url https://download.pytorch.org/whl/cu118
+
+# install scladders
+RUN pip install scladder
+
 COPY . /
-RUN pip install --upgrade pip && pip install .
+RUN pip install .
