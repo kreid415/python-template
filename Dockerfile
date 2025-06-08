@@ -27,8 +27,6 @@ RUN ARCH="$(uname -m)" && \
     bash installer.sh -b -p /opt/conda && \
     rm installer.sh
 
-
-
 ENV PATH="/opt/conda/bin:$PATH"
 
 # Add environment lock file
@@ -50,16 +48,9 @@ ENV PATH=/opt/conda/envs/myenv/bin:$PATH
 # install precommit, ruff, and nbstripout
 RUN pip install pre-commit ruff nbstripout
 
-# precommit install --install-hooks
-RUN pre-commit install
-
-
 # install PyTorch with CUDA (only for Linux GPU image)
 RUN pip install --upgrade pip && \
-    pip install torch==2.2.0 torchvision==0.17.0 torchaudio==2.2.0 --index-url https://download.pytorch.org/whl/cu118
-
-# install scladders
-RUN pip install scladder
+    pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
 
 COPY . /
 RUN pip install .

@@ -11,7 +11,7 @@ repos:
 
   # Strip output from Jupyter notebooks before commit
   - repo: https://github.com/kynan/nbstripout
-    rev: master
+    rev: main
     hooks:
       - id: nbstripout
         files: \.ipynb$
